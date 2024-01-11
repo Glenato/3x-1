@@ -1,5 +1,8 @@
 import random
-import fonctions
+import tesssst_V6
+
+chart = False
+output = False
 
 print ("Hi !\n")
 
@@ -14,8 +17,8 @@ def syntaxe():
 - run + anynumber : runs the 3x + 1 programme with the number you typed after 'run'
 - run random : runs the 3x + 1 programme with a random number from 1 to 1,000,000
 - run forever : runs forever until you stop it or you find an other loop than 4, 2, 1
-- output false : stops saving the output of the 3x + 1 programme in a txt file (thsi is True by default)
-- graph false : stops showing a graph after the execution of the program 3x + 1
+- output false : stops saving the chart of the 3x + 1 programme in a png file, note that for the output to be saved chart must be activated (this is False by default)
+- chart false : stops showing a chart after the execution of the program 3x + 1 (this is True by default)
 - info : get more information about the 3x + 1 program   
 - customodd + '4x + 1' : changes the value added to the odd numbers to whatever is after customodd (here is : 4x + 1)
 - customeven + '2' : changes the value added to the even numbers to whatever is after customeven (here is : 2)
@@ -37,20 +40,38 @@ while True:
     user_input = input("--> ")
 
     if user_input.lower().strip() =="info":
-        info() 
+        info()
 
-    if user_input.lower()=="run random":
+    elif "chart" in user_input.lower().strip():
+        user_input = user_input.lower().removeprefix("chart").strip()
+        if user_input == "true":
+            chart = True
+            print ("The chart has been activated.")
+        elif user_input == "false":
+            chart = False
+            print ("The chart has been disabled.")
+
+    elif "output" in user_input.lower().strip():
+        user_input = user_input.lower().removeprefix("output").strip()
+        if user_input == "true":
+            output = True
+            print ("The output has been activated.")
+        elif user_input == "false":
+            output = False
+            print ("The output has been disabled.")
+
+    elif user_input.lower()=="run random":
         random_number =random.randint(1,1000000000000000)
         print (random_number)
-        reply, lilist = fonctions.formula(random_number)
-        print (f"\nAfter having choosen {random_number} as a random number, this is a list with every number it encountered :\n\n{lilist}")
+        reply, lilist = tesssst_V6.formula(random_number, False, chart, output)
+        print (f"\nAfter having choosen {random_number} as a random number, this is a list with every number it encountered :\n\n{lilist}\n")
     
     elif "run forever" in user_input.lower():
 
         user_input = user_input.removeprefix("run forever").strip()
         
         if user_input.strip() == "":
-            number = fonctions.run_forever()
+            number = tesssst_V6.run_forever()
 
         else:
             try: 
@@ -59,7 +80,7 @@ while True:
                     print ("Your number must be an integer abouve the number 0")
 
                 else:
-                    number = fonctions.run_forever(user_input)
+                    number = tesssst_V6.run_forever(user_input)
 
             except ValueError:
                 print ("Invalide syntaxe please use valide numbers after the run command (Exemple : run forever 12000)")
@@ -72,8 +93,8 @@ while True:
 
         try: 
             user_input = int (user_input)
-            reply, lilist = fonctions.formula(user_input) 
-            print (f"\nAfter you have choosen {user_input}, this is a list with every number it encountered :\n\n{lilist}")           
+            reply, lilist = tesssst_V6.formula(user_input, False, chart, output) 
+            print (f"\nAfter you have choosen {user_input}, this is a list with every number it encountered :\n\n{lilist}\n")           
             
             del reply, lilist
 
