@@ -39,7 +39,11 @@ For more detail you can always check this wikipedia article on the Collatz conje
 while True:
     user_input = input("--> ")
 
-    if user_input.lower().strip() =="info":
+    if user_input.lower().strip() == "quit":
+        print ("Good bye !")
+        quit()
+    
+    elif user_input.lower().strip() =="info":
         info()
 
     elif "chart" in user_input.lower().strip():
