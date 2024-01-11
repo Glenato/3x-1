@@ -19,4 +19,4 @@ This programme lets you :
 - info : get more information about the 3x + 1 program   
 - customodd + '4x + 1' : changes the value added to the odd numbers to whatever is after customodd (here is : 4x + 1)
 - customeven + '2' : changes the value added to the even numbers to whatever is after customeven (here is : 2)
-""")
+
