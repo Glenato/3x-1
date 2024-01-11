@@ -1,5 +1,5 @@
 import random
-import tesssst_V6
+import fonctions
 
 chart = False
 output = False
@@ -63,7 +63,7 @@ while True:
     elif user_input.lower()=="run random":
         random_number =random.randint(1,1000000000000000)
         print (random_number)
-        reply, lilist = tesssst_V6.formula(random_number, False, chart, output)
+        reply, lilist = fonctions.formula(random_number, False, chart, output)
         print (f"\nAfter having choosen {random_number} as a random number, this is a list with every number it encountered :\n\n{lilist}\n")
     
     elif "run forever" in user_input.lower():
@@ -71,7 +71,7 @@ while True:
         user_input = user_input.removeprefix("run forever").strip()
         
         if user_input.strip() == "":
-            number = tesssst_V6.run_forever()
+            number = fonctions.run_forever()
 
         else:
             try: 
@@ -80,7 +80,7 @@ while True:
                     print ("Your number must be an integer abouve the number 0")
 
                 else:
-                    number = tesssst_V6.run_forever(user_input)
+                    number = fonctions.run_forever(user_input)
 
             except ValueError:
                 print ("Invalide syntaxe please use valide numbers after the run command (Exemple : run forever 12000)")
@@ -93,7 +93,7 @@ while True:
 
         try: 
             user_input = int (user_input)
-            reply, lilist = tesssst_V6.formula(user_input, False, chart, output) 
+            reply, lilist = fonctions.formula(user_input, False, chart, output) 
             print (f"\nAfter you have choosen {user_input}, this is a list with every number it encountered :\n\n{lilist}\n")           
             
             del reply, lilist
